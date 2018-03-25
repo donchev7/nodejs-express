@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/donchev7/justanothertodo.git"
+    "url": "https://github.com/donchev7/nodejs-express.git"
   },
   "author": "Bobby Donchev <contact@donchev.is>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/donchev7/justanothertodo/issues"
+    "url": "https://github.com/donchev7/nodejs-express/issues"
   },
-  "homepage": "https://github.com/donchev7/justanothertodo",
+  "homepage": "https://github.com/donchev7/nodejs-express",
   "dependencies": {
     "pm2": "^2.10.1",
     "express": "4.16.3",
