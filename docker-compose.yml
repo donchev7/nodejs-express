@@ -4,8 +4,6 @@ services:
     build: .
     command: ["npm", "run", "dev"]
     volumes:
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
       - ./webapp:/home/node/webapp
     ports:
       - "127.0.0.1:3000:3000"
@@ -18,6 +16,7 @@ services:
 
   mongodb:
     image: mongo:3.6.3-jessie
+    init: true
     volumes:
       - mongo_data:/data/db
     environment:

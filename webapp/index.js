@@ -2,7 +2,7 @@ let express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  task = require('./todo/todoList'),
+  task = require('./todo/todoModel'),
   bodyParser = require('body-parser');
 
 // Use native promises
