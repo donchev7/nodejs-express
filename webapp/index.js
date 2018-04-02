@@ -1,32 +1,27 @@
-let express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  task = require('./todo/todoModel'),
-  bodyParser = require('body-parser');
+'use strict';
+
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const logger = require('./config/logger');
+const errorHandler = require('./middleware/errorHandler');
+require('./todo/todoModel');
+const routes = require('./todo/todoRoutes');
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 // Use native promises
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://mongodb:27017/Todo');
+const mongoUrl = process.env.MONGO_URL;
+mongoose.connect(mongoUrl);
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./todo/todoRoutes');
 routes(app);
-
 app.listen(port);
+logger.info(`todo list RESTful API server started on: ${port}`);
 
-console.log('todo list RESTful API server started on: ' + port);
-
-app.use(function(req, res, next) {
-  res.send('Hello World');
-  next();
-});
-
-
-// SET UP CONFIG VARs for mongo and others?
-// Configure domain error handling
-// Add error handling middleware
-// Add other app middleware in folder
-// Write tests for controller, route,  middleware
+app.use(errorHandler.notFound);
+app.use(errorHandler.serverError);

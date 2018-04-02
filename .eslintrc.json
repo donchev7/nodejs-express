@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "rules": {
+    "prefer-destructuring": ["error", {
+      "array": true,
+      "object": true
+    }],
+    "semi": ["error", "always"],
+    "comma-dangle": "off",
+    "no-use-before-define": "off",
+    "arrow-parens": ["error", "always"],
+    "max-len": ["error", 120],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+  }
+}

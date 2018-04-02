@@ -5,6 +5,7 @@ ENV NODE_ENV=${NODE_ENV:-production}
 WORKDIR /home/node
 
 COPY package.json .
+COPY package-lock.json .
 COPY docker-entrypoint.sh /usr/bin
 RUN npm install
 
